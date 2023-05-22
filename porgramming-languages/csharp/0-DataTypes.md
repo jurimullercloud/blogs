@@ -9,6 +9,8 @@ In a few the upcoming blog series, I will try to summarize this topic through th
 
 ## Contents
  - [Type Implementations in C#](#type-implementations-in-c)
+    - [Value Types](#value-types)
+    - [Reference Types](#value-types)
  - [Scratching .NET memory model]() 
  - [Type Conversions in C#]()
  - [Conclusion]()
@@ -18,8 +20,8 @@ In a few the upcoming blog series, I will try to summarize this topic through th
 
 As the name of this section suggests types in C# are implementions. This is because, C# is a language that is implemented 
 ontop of .NET runtime. For any language that is implemented ontop .NET runtime (which is also called **Common Language Runtime**), 
-the runtime provides **Common Type System**. The CTS provides an object-oriented model for types that the IL code 
-(which is the common language that all .NET languages are compiled into) uses. In short there are 5 type categories in 
+the runtime provides **Common Type System**. The CTS provides an object-oriented model for types that all
+.NET languages uses, including the Common Intermediate Language (MSIL). In short there are 5 type categories in 
 .NET:  
  - Classes (implements `System.Object`)
  - Structures (implements `System.ValueType` which implements `System.Object`)
@@ -41,29 +43,51 @@ are implementing `System.Object` class. C# further categorizes those types as:
 
 
 ### Value Types
-
 Value types are direct storage of data in the given memory model. They usually have small memory requirements, that's why 
-they are subtypes of .NET Structures (therefore implementing `System.ValueType` class.).
-A value type can be created using `struct` keyword:
-
-```c#
-public struct ComplexNum { public double Real; public double Imaginary;}
-```
-
-Apart from custom value types, there are also **predefined value types**. These include:
+they are subtypes of .NET Structures (therefore implementing `System.ValueType` class.). C# has predefined value types,
+which are categorized as follows:
  - **Numeric Types**
   - Integrals (`sbyte`, `byte`, `short`, `ushort`, `int`, `uint`, `long`, `ulong`)
   - Floating point types (`float`, `double`, `decimal`) 
  - **Boolean** (`bool`)
  - **Character** (`char`)
 
+Apart from predefined value types, a custom value type can be created using `struct` keyword. The following example below
+shows how a complex number can be modelled as a value type using `struct`:
+```c#
+public struct ComplexNum { public double Real; public double Imaginary;}
+```
+
+In fact, all c# predifined value types are *type aliases* of a corresponding runtime type which is defined as a struct. 
+See an extract from the [runtime source code for System.Boolean type](src/libraries/System.Private.CoreLib/src/System/Boolean.cs)
+```c#
+    [Serializable]
+    [TypeForwardedFrom("mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089")]
+    public readonly struct Boolean
+        : IComparable,
+          IConvertible,
+          IComparable<bool>,
+          IEquatable<bool>,
+          ISpanParsable<bool>
+    {
+        ...
+    }
+```
+
 > **Note**:   
 Apart from `decimal` type, all predefined value types are called **runtime primitives**. This is because they are
-compiled to a set of intructions that are directly understood by underlying processor. (more on `decimal` vs `double` vs `float` in the next blogs.).
+compiled to a set of intructions that are directly understood by underlying processor. (more on `decimal` vs `double` vs 
+`float` in the next blogs.).  
 
-Because value types are inheriting `System.ValueType` class of the runtime, there are few constraints on them:
+Because value types are (implicitly)inheriting `System.ValueType` class of the runtime, there are few constraints on them:
  - They cannot directly inherit from other types.
- - No other type can be derived from, thus all of them are sealed. 
+ - No other type can be derived from them (thus all of them get `sealed` modifier when compiled to IL code). 
+
+### **Reference Types**
+
+
+
+
 
 
 
