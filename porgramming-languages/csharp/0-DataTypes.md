@@ -1,6 +1,7 @@
 # C# Type and Memory Model, Type Conversion
 
-![test img](./test.jpg)
+
+![alt text](./../../_media/images/csharp-datatypes.jpg)
 ## Introduction
 
 One of the key pillars of learning any programming language is to understand the underlying type structure of the language.
