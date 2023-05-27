@@ -1,7 +1,7 @@
 # C# Type and Memory Model, Type Conversion
 
 
-![alt text](https://raw.githubusercontent.com/jurimullercloud/blogs/draft/blogs-topics/_media/images/csharp-datatypes.jpg)
+![alt text](./../../_media/images/csharp-datatypes.jpg)
 ## Introduction
 
 One of the key pillars of learning any programming language is to understand the underlying type structure of the language.
