@@ -1,5 +1,6 @@
 # C# Type and Memory Model, Type Conversion
 
+![test img](./test.jpg)
 ## Introduction
 
 One of the key pillars of learning any programming language is to understand the underlying type structure of the language.
@@ -25,7 +26,7 @@ the runtime provides **Common Type System**. The CTS provides an object-oriented
 - Classes (implements `System.Object`)
 - Structures (implements `System.ValueType` which implements `System.Object`)
 - Enumerations (implements `System.Enum` which implements `System.ValueType`)
-- Interfaces (TODO)
+- Interfaces (maps one to one with C# `interface`)
 - Delegates (TODO)
 
 Each prededifned or custom type in C# is the implementation of either a Class type, or Structure or Enumeration types, while
