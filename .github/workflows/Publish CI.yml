@@ -29,7 +29,7 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
       - name: Run Publisher Container
-        uses: addnab/docker-run-action#v3
+        uses: addnab/docker-run-action@v3
         with:
           image: jurimullercloud/md2medium-publisher:v1.2
           options: >-
