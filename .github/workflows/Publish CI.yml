@@ -35,6 +35,6 @@ jobs:
             -e INTEGRATION_TOKEN=${{ secrets.MEDIUM_INTEGRATION_TOKEN }}
             -e REPO_ADDRESS='jurimullercloud/blogs'
             -e BRANCH=${{ github.event.inputs.branch }}
-            -e FILE_PATH=${{ github.event.inputs.branch }}
-            -e BLOG_TITLE=${{ github.event.inputs.blog_title }}
+            -e FILE_PATH='${{ github.event.inputs.file_path }}'
+            -e BLOG_TITLE='${{ github.event.inputs.blog_title }}'
  
