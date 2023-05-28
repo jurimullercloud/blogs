@@ -33,8 +33,8 @@ jobs:
         env:
           PUBLISHER_ENDPOINT: "https://md2medium-publisher.azurewebsites.net/api/Md2MediaumPublisher"
         run: |
-          curl -X POST $PUBLISHER_ENDPOINT \
+          curl -X POST ${{ env.PUBLISHER_ENDPOINT }} \
           -H "x-functions-key: ${{ secrets.PUBLISHER_API_KEY }}" \
           -H "Content-Type: application/json" \ 
-          -d '{"repoAddress": "jurimullercloud/blogs", "branch": "${{ github.events.inputs.branch}}", "filePath": "${{ github.events.inputs.file_path}}, "title": "${{ github.events.inputs.blog_title}}"}"
+          -d '{"repoAddress": "jurimullercloud/blogs", "branch": "${{ github.events.inputs.branch}}", "filePath": "${{ github.events.inputs.file_path}}", "title": "${{ github.events.inputs.blog_title}}"}"
         
