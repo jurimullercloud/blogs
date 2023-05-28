@@ -30,7 +30,11 @@ jobs:
       - uses: actions/checkout@v3
       - name: Run Publisher Container
         uses: addnab/docker-run-action@v3
+        env:
+          INTEGRATION_TOKEN: ${{ secrets.MEDIUM_INTEGRATION_TOKEN }} 
+          REPO_ADDRESS: jurimullercloud/blogs
+          BRANCH: ${{ github.event.inputs.branch }}
+          FILE_PATH: ${{ github.event.inputs.branch }}
+          BLOG_TITLE: ${{ github.event.inputs.blog_title }} 
         with: 
           image: jurimullercloud/md2medium-publisher:v1.2
-          options: -e INTEGRATION_TOKEN=${{ secrets.MEDIUM_INTEGRATION_TOKEN }}  
-          # -e REPO_ADDRESS='jurimullercloud/blogs' -e BRANCH=${{ github.event.inputs.branch }} -e FILE_PATH=${{ github.event.inputs.branch }} -e BLOG_TITLE=${{ github.event.inputs.blog_title }} 
