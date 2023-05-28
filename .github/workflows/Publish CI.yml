@@ -30,3 +30,6 @@ jobs:
       BRANCH: ${{ github.event.inputs.branch }}
       FILE_PATH: ${{ github.event.inputs.file_path }}'
       BLOG_TITLE: ${{ github.event.inputs.blog_title }}'
+    steps:
+      - name: Verify
+        run: echo "Done!" 
