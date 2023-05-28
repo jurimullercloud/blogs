@@ -34,8 +34,8 @@ jobs:
           INTEGRATION_TOKEN: ${{ secrets.MEDIUM_INTEGRATION_TOKEN }} 
           REPO_ADDRESS: jurimullercloud/blogs
           BRANCH: ${{ github.event.inputs.branch }}
-          FILE_PATH: ${{ github.event.inputs.branch }}
+          FILE_PATH: ${{ github.event.inputs.file_path }}
           BLOG_TITLE: ${{ github.event.inputs.blog_title }} 
         with: 
           image: jurimullercloud/md2medium-publisher:v1.2
-          options: -e INTEGRATION_TOKEN=${{ env.INTEGRATION_TOKEN }} -e REPO_ADDRESS=${{ env.REPO_ADDRESS }} -e BRANCH=${{ env.BRANCH }} -e FILE_PATH=${{ env.FILE_PATH}} -e BLOG_TITLE='${{ env.BLOG_TITLE}}'
+          options: -e INTEGRATION_TOKEN=${{ env.INTEGRATION_TOKEN }} -e REPO_ADDRESS=${{ env.REPO_ADDRESS }} -e BRANCH=${{ env.BRANCH }} -e FILE_PATH=${{ env.FILE_PATH}} -e BLOG_TITLE=${{ env.BLOG_TITLE}}
