@@ -38,4 +38,4 @@ jobs:
           BLOG_TITLE: ${{ github.event.inputs.blog_title }} 
         with: 
           image: jurimullercloud/md2medium-publisher:v1.2
-          options: -e INTEGRATION_TOKEN=${{ env.INTEGRATION_TOKEN }} -e REPO_ADDRESS=${{ env.REPO_ADDRESS }}
+          options: -e INTEGRATION_TOKEN=${{ env.INTEGRATION_TOKEN }} -e REPO_ADDRESS=${{ env.REPO_ADDRESS }} -e BRANCH=${{ env.BRANCH }} -e FILE_PATH=${{ env.FILE_PATH}} -e BLOG_TITLE='${{ env.BLOG_TITLE}}'
