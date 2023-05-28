@@ -23,13 +23,14 @@ jobs:
   build:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
-    container: jurimullercloud/md2medium-publisher:v1.2
-    env:
-      NTEGRATION_TOKEN: ${{ secrets.MEDIUM_INTEGRATION_TOKEN }}
-      REPO_ADDRESS: 'jurimullercloud/blogs'
-      BRANCH: ${{ github.event.inputs.branch }}
-      FILE_PATH: ${{ github.event.inputs.file_path }}'
-      BLOG_TITLE: ${{ github.event.inputs.blog_title }}'
+    container: 
+      image: jurimullercloud/md2medium-publisher:v1.2
+      env:
+        NTEGRATION_TOKEN: ${{ secrets.MEDIUM_INTEGRATION_TOKEN }}
+        REPO_ADDRESS: 'jurimullercloud/blogs'
+        BRANCH: ${{ github.event.inputs.branch }}
+        FILE_PATH: ${{ github.event.inputs.file_path }}'
+        BLOG_TITLE: ${{ github.event.inputs.blog_title }}'
     steps:
       - name: Verify
         run: echo "Done!" 
