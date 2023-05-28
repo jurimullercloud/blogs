@@ -36,5 +36,10 @@ jobs:
           curl -X POST ${{ env.PUBLISHER_ENDPOINT }} \
           -H "x-functions-key: ${{ secrets.PUBLISHER_API_KEY }}" \
           -H "Content-Type: application/json" \ 
-          -d '{"repoAddress": "jurimullercloud/blogs", "branch": "${{ github.events.inputs.branch}}", "filePath": "${{ github.events.inputs.file_path}}", "title": "${{ github.events.inputs.blog_title}}"}"
+          -d '{ \
+            "repoAddress": "jurimullercloud/blogs", \
+            "branch": "${{ github.event.inputs.branch}}", \
+            "filePath": "${{ github.event.inputs.file_path}}", \
+            "title": "${{ github.event.inputs.blog_title}}" \ 
+          }'
         
