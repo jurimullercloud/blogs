@@ -16,8 +16,7 @@ on:
       branch:
         description: "Git repo branch"
         default: "main"
-env:
-  PUBLISHER_ENDPOINT: "https://md2medium-publisher.azurewebsites.net/api/Md2MediaumPublisher
+
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -31,6 +30,8 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
       - name: Send Publish Request
+        env:
+          PUBLISHER_ENDPOINT: "https://md2medium-publisher.azurewebsites.net/api/Md2MediaumPublisher"
         run: |
           curl -X POST $PUBLISHER_ENDPOINT \
           -H "x-functions-key: ${{ secrets.PUBLISHER_API_KEY }}" \
