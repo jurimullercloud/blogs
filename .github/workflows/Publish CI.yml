@@ -29,9 +29,10 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
       - name: Run Publisher Container
-        uses: docker://jurimullercloud/md2medium-publisher:v1.2
+        uses: addnab/docker-run-action#v3
         with:
-          args: >-
+          image: jurimullercloud/md2medium-publisher:v1.2
+          options: >-
             -e INTEGRATION_TOKEN=${{ secrets.MEDIUM_INTEGRATION_TOKEN }}
             -e REPO_ADDRESS='jurimullercloud/blogs'
             -e BRANCH=${{ github.event.inputs.branch }}
