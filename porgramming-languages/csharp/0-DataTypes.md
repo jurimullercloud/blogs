@@ -1,7 +1,5 @@
-# C# Type and Memory Model, Type Conversion
+# C# Type and Memory Model 
 
-
-![alt text](./../../_media/images/csharp-datatypes.jpg)
 ## Introduction
 
 One of the key pillars of learning any programming language is to understand the underlying type structure of the language.
@@ -28,10 +26,9 @@ the runtime provides **Common Type System**. The CTS provides an object-oriented
 - Structures (implements `System.ValueType` which implements `System.Object`)
 - Enumerations (implements `System.Enum` which implements `System.ValueType`)
 - Interfaces (maps one to one with C# `interface`)
-- Delegates (TODO)
+- Delegates (implements `System.MulticastDelegate` which implements `System.Delegate`)
 
-Each prededifned or custom type in C# is the implementation of either a Class type, or Structure or Enumeration types, while
-`delegate`'s and `interface`'s have one to one mapping (TODO) between the language and runtime. Therefore, all of the C# types
+Each prededifned or custom type in C# is the implementation of either a Class type (`class`),  a Structure or Enumeration types (`int`, `byte`, `enum` etc.), an Interface (`interface`) or a Delegate (`delegate`) types of the runtime . Therefore, all of the C# types
 are implementing `System.Object` class. C# further categorizes those types as:
 
 - Value types
@@ -187,8 +184,7 @@ mySalary.GetNetSalary(40_000);
 
 In this example, when an instance of `Salary` class is being instantiated, `mySalary` object will be stored on the heap, 
 while the refernce to the location of `mySalary` object is stored on the stack (because `var mySalary = ...` expression runs
-inside the `Main` function). Because `Tax` field is defined inside Salary object, despite being a value type, it will also be stored
-on the heap. When user calls the `GetNetSalary` function on the instance, it will be populated on the stack, thus the variables
+inside the `Main` function). Because `Tax` field is defined inside Salary object, despite being a value type, it will also be stored on the heap. When user calls the `GetNetSalary` function on the instance, it will be populated on the stack, thus the variables
 `gross` and `net`. As you can see while all 3 of these data are of value type (`decimal`), one gets stored on the heap,
 while the other 2 on the stack.
 
