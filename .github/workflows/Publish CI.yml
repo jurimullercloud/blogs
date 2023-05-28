@@ -23,14 +23,13 @@ jobs:
   build:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
-    container: 
-      image: jurimullercloud/md2medium-publisher:v1.2
-      env:
-        NTEGRATION_TOKEN: ${{ secrets.MEDIUM_INTEGRATION_TOKEN }}
-        REPO_ADDRESS: 'jurimullercloud/blogs'
-        BRANCH: ${{ github.event.inputs.branch }}
-        FILE_PATH: ${{ github.event.inputs.file_path }}'
-        BLOG_TITLE: ${{ github.event.inputs.blog_title }}'
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      - name: Verify
-        run: echo "Done!" 
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v3
+      - name: Run Publisher Container
+        uses: addnab/docker-run-action@v3
+        with: 
+          image: jurimullercloud/md2medium-publisher:v1.2
+          options: -e INTEGRATION_TOKEN=${{ secrets.MEDIUM_INTEGRATION_TOKEN }}  -e REPO_ADDRESS='jurimullercloud/blogs' -e BRANCH=${{ github.event.inputs.branch }} -e FILE_PATH=${{ github.event.inputs.branch }} -e BLOG_TITLE=${{ github.event.inputs.blog_title }} 
